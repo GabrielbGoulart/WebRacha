@@ -19,10 +19,15 @@
         <td><%= event.name %></td>
         <td><%= event.date %></td>
         <td><%= event.hour %></td>
-        <td><%= event.user %></td>
+        <td><%= event.owner %></td>
         <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+
+        <td><%=link_to 'Edit', edit_event_path(event)%></td>
+
+
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%=link_to 'Cadastrar',"/subscribe/#{event.id}", method: :put %>
       </tr>
     <% end %>
   </tbody>
@@ -31,3 +36,4 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %>
+<%= link_to 'log out', destroy_user_session_path , :method => :delete %>

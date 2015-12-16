@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
-  has_many :user, :through => :subscriptions
-  has_many :subscriptions
+  has_and_belongs_to_many :user
+
 end

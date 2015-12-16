@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216000736) do
+ActiveRecord::Schema.define(version: 20151216142846) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.date     "date"
     t.time     "hour"
-    t.integer  "user_id"
+    t.integer  "owner"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "subscription_id"
   end
 
+  add_index "events", ["owner"], name: "index_events_on_owner"
   add_index "events", ["subscription_id"], name: "index_events_on_subscription_id"
-  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20151216000736) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "position"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
