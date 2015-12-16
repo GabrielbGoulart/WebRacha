@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy,:subscribe]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :check_owner, only:[:edit]
+  before_action :check_owner, only:[:edit, :destroy]
 
   # GET /events
   # GET /events.json
@@ -17,7 +17,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-
   end
 
   # GET /events/1/edit
@@ -66,11 +65,12 @@ class EventsController < ApplicationController
   end
 
 
-def subscribe
-  @event.users << current_user
-  redirect_to :back
+    def subscribe
+      @event = Event.find(params[:id])
+      @event.users << current_user
+      redirect_to :back, :notice => "Cadastrado :)"
 
-end
+    end
 
   private
 

@@ -11,30 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216142846) do
+ActiveRecord::Schema.define(version: 20151216194738) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.date     "date"
     t.time     "hour"
     t.integer  "owner"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "subscription_id"
-  end
-
-  add_index "events", ["owner"], name: "index_events_on_owner"
-  add_index "events", ["subscription_id"], name: "index_events_on_subscription_id"
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
-  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+  add_index "events", ["owner"], name: "index_events_on_owner"
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
+  add_index "events_users", ["event_id"], name: "index_events_users_on_event_id"
+  add_index "events_users", ["user_id"], name: "index_events_users_on_user_id"
+
+  create_table "user_events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,5 +56,13 @@ ActiveRecord::Schema.define(version: 20151216142846) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_events", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "events_id"
+  end
+
+  add_index "users_events", ["events_id"], name: "index_users_events_on_events_id"
+  add_index "users_events", ["user_id"], name: "index_users_events_on_user_id"
 
 end
