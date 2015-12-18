@@ -2,11 +2,24 @@
   userid
 </p>
 
+
 <% @users.each do |user| %>
 
-<tr>
-  <td>
-    <%= user.id%>
-  </td>
-</tr>
+
+<ul>
+<br>
+    <%=user.id%>
+    <% user.events.each do |t|%>
+<li>
+        ok<%=t.id%>
+</li>
+<br>
+
+
+
+      <%end%>
+
+</ul>
+
+
 <%end%>

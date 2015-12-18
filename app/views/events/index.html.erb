@@ -8,10 +8,15 @@
       <th>Name</th>
       <th>Date</th>
       <th>Hour</th>
-      <th>User</th>
+      <th>Owner</th>
       <th colspan="3"></th>
     </tr>
   </thead>
+
+<p>
+
+</p>
+
 
   <tbody>
     <% @events.each do |event| %>
@@ -20,14 +25,16 @@
         <td><%= event.date %></td>
         <td><%= event.hour %></td>
         <td><%= event.owner %></td>
+
         <td><%= link_to 'Show', event %></td>
-
+        <% if @current_user.id == event.owner %>
         <td><%=link_to 'Edit', edit_event_path(event)%></td>
-
-
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-        <td><%=link_to 'Cadastrar',"/subscribe/#{event.id}", method: :put %>
+        <%else%>
+          <% if !event.already_subscribed(@current_user)%>
+          <td><%=link_to 'Cadastrar',"/subscribe/#{event.id}", method: :put %></td>
+            <%end%>
+          <%end%>
       </tr>
     <% end %>
   </tbody>

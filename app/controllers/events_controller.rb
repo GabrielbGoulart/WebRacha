@@ -7,6 +7,8 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+      @current_user = current_user
+
   end
 
   # GET /events/1
@@ -28,6 +30,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.owner = current_user.id
+
 
     respond_to do |format|
       if @event.save
@@ -64,20 +67,20 @@ class EventsController < ApplicationController
     end
   end
 
-
+  #Insere na tabela de relação
     def subscribe
       @event = Event.find(params[:id])
       @event.users << current_user
       redirect_to :back, :notice => "Cadastrado :)"
-
     end
 
   private
 
     def check_owner
       if current_user.id == @event.owner
-        else
+      else
           redirect_to root_path
+
         end
 
     end
