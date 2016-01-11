@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
+  root "events#index"
+
+
+  devise_for :users
+
+  devise_scope :user do
+    get 'sign_in' => 'devise/sessions#new'
+  end
 
 put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
-  devise_for :users, :skip => [:sessions]
-  as :user do
-    get 'sign_in' => 'devise/sessions#new', :as => :new_user_session
-    post 'sign_in' => 'devise/sessions#create', :as => :user_session
-    delete 'sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
-  end
-  resources :users 
-
   resources :events
 
-  root "events#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
