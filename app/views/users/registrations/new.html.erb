@@ -24,6 +24,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+<div class="field">
+  <%=f.select(:position, options_for_select([['Goleiro',"Goleiro"],['Linha',"Linha"]], 2))%>
+</div>
 
 </div>
   <div class="actions">

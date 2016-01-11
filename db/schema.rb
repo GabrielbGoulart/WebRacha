@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216194738) do
+ActiveRecord::Schema.define(version: 20160111004958) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.date     "date"
     t.time     "hour"
     t.integer  "owner"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "userlimit"
+    t.integer  "goalkeeperlimit"
+    t.boolean  "isFulGoal",       default: false
+    t.boolean  "isFul",           default: false
   end
 
   add_index "events", ["owner"], name: "index_events_on_owner"
@@ -31,6 +35,16 @@ ActiveRecord::Schema.define(version: 20151216194738) do
 
   add_index "events_users", ["event_id"], name: "index_events_users_on_event_id"
   add_index "events_users", ["user_id"], name: "index_events_users_on_user_id"
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "user_events", force: :cascade do |t|
     t.datetime "created_at", null: false
