@@ -74,7 +74,7 @@ class EventsController < ApplicationController
       @event.users << current_user
       @event.setFul
       redirect_to :back, :notice => "Cadastrado :) sim #{@event.isFul}, #{@event.isFulGoal}"
-    end
+    
     end
 
 
