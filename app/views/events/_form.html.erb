@@ -23,6 +23,15 @@
     <%= f.label :hour %><br>
     <%= f.time_select :hour %>
   </div>
+  <div class="field">
+    <%= f.label :Limite_de_linha %><br>
+    <%= f.number_field :userlimit %>
+  </div>
+  <div class="field">
+    <%= f.label :Limite_de_goleiros %><br>
+    <%= f.number_field :goalkeeperlimit %>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>

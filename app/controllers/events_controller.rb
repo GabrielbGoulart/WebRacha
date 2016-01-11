@@ -7,13 +7,14 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-      @current_user = current_user
+    @current_user = current_user
 
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @users = User.all
   end
 
   # GET /events/new
@@ -71,8 +72,11 @@ class EventsController < ApplicationController
     def subscribe
       @event = Event.find(params[:id])
       @event.users << current_user
-      redirect_to :back, :notice => "Cadastrado :)"
+      @event.setFul
+      redirect_to :back, :notice => "Cadastrado :) sim #{@event.isFul}, #{@event.isFulGoal}"
     end
+    end
+
 
   private
 
@@ -91,7 +95,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :hour)
+      params.require(:event).permit(:name, :date, :hour, :userlimit, :user, :goalkeeperlimit)
     end
 
 

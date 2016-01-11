@@ -20,5 +20,13 @@
   <%= @event.owner %>
 </p>
 
+<%=@event.userlimit%>
+
+  <%@event.users.each do |d|%>
+    <%=@users.find(d.id).name%>
+  <%end%>
+
+
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
