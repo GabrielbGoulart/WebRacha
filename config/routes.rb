@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  root "hello#index"
-=======
+
+  root "events#index"
+
   resource :inboxes, :controller => 'inboxes', :only => [:show,:create]
   resource :inbox, :controller => 'hooks/inbox', :only => [:show,:create]
   resource :inbox, :controller => 'inbox', :only => [:show,:create]
-  root "events#index"
->>>>>>> 7a88c22e9185d2d7259a95377021f98e1222e83f
 
 
-  devise_for :users
 
   devise_scope :user do
-    get 'sign_in' => 'devise/sessions#new'
+    put 'sign_in' => 'devise/sessions#new'
   end
+  devise_for :users
 
 put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
   resources :events
