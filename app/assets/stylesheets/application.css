@@ -14,8 +14,8 @@
  *= require_self
  */
 
- *= require bootstrap_and_overrides
+
 .container{
   padding-top: 60px;
-  
+
 }

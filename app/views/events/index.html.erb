@@ -1,30 +1,124 @@
 <p id="notice"><%= notice %></p>
-
-<h1 align= "center">Listing Events</h1>
-
-
-
-<div class="container">
-
-  <div class="row bs-download">
-      <% @events.each do |event| %>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <div class="caption">
-              <h3 align= "center"> <%=event.name%> </h3>
-              <div class="well well-small">
-              <p> Data: <%=event.date.to_formatted_s(:short) %></p>
-              </div>
-              <p><%=link_to('Ver Racha', event, class: "btn btn-primary")%></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-   </div>
-
- </div>
-
-<br>
-
 <%= link_to 'New Event', new_event_path %>
 <%= link_to 'log out', destroy_user_session_path , :method => :delete %>
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Lista de Eventos</h1>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Portfolio</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section><!--/#title-->
+
+<section id="portfolio" class="container">
+    <ul class="portfolio-filter">
+        <li><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+        <li><a class="btn btn-default" href="#" data-filter=".bootstrap">Bootstrap</a></li>
+        <li><a class="btn btn-default" href="#" data-filter=".html">HTML</a></li>
+        <li><a class="btn btn-default" href="#" data-filter=".wordpress">Wordpress</a></li>
+    </ul><!--/#portfolio-filter-->
+
+    <ul class="portfolio-items col-3">
+      <% @events.each do |event| %>
+        <li class="portfolio-item apps">
+            <div class="item-inner">
+                <img src="images/portfolio/thumb/estadio.jpg" alt="">
+                <h5><%=event.name%> - <%=event.date.to_formatted_s(:short) %></h5>
+                <div class="overlay">
+                    <%=link_to(event, class: "preview btn btn-danger") do %>
+                      <i class="icon-eye-open"></i>
+                    <% end %>
+                </div>
+            </div>
+        </li><!--/.portfolio-item-->
+      <% end %>
+    </ul>
+</section><!--/#portfolio-->
+
+<section id="bottom" class="wet-asphalt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <h4>About Us</h4>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                <p>Pellentesque habitant morbi tristique senectus.</p>
+            </div><!--/.col-md-3-->
+
+            <div class="col-md-3 col-sm-6">
+                <h4>Company</h4>
+                <div>
+                    <ul class="arrow">
+                        <li><a href="#">The Company</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Conatct Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Copyright</a></li>
+                    </ul>
+                </div>
+            </div><!--/.col-md-3-->
+
+            <div class="col-md-3 col-sm-6">
+                <h4>Latest Blog</h4>
+                <div>
+                    <div class="media">
+                        <div class="pull-left">
+                            <img src="images/blog/thumb1.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                            <small class="muted">Posted 17 Aug 2013</small>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="pull-left">
+                            <img src="images/blog/thumb2.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                            <small class="muted">Posted 13 Sep 2013</small>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="pull-left">
+                            <img src="images/blog/thumb3.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                            <small class="muted">Posted 11 Jul 2013</small>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.col-md-3-->
+
+            <div class="col-md-3 col-sm-6">
+                <h4>Address</h4>
+                <address>
+                    <strong>Twitter, Inc.</strong><br>
+                    795 Folsom Ave, Suite 600<br>
+                    San Francisco, CA 94107<br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                </address>
+                <h4>Newsletter</h4>
+                <form role="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" autocomplete="off" placeholder="Enter your email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button">Go!</button>
+                        </span>
+                    </div>
+                </form>
+            </div> <!--/.col-md-3-->
+        </div>
+    </div>
+</section><!--/#bottom-->

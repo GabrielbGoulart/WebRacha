@@ -27,7 +27,13 @@
 <%end%>
 
 <p>
-  <strong>Cost:</strong>
+  <strong>Cost of naked:</strong>
+    <%= @event.cost%>
+</p>
+
+
+<p>
+  <strong>Cost per player:</strong>
     <%valor = @event.cost/@event.userlimit %>
     <%= valor.round(2) %>
 </p>
