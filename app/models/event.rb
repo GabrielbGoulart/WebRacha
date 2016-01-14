@@ -9,9 +9,11 @@ class Event < ActiveRecord::Base
       users = User.all
     self.users.each do |p|
         if users.find(p.id).position == "Goleiro"
+          goalKeepers =0
           goalKeepers += 1
           self.isFul = true if goalKeepers == self.userlimit
         else
+          linePlayers= 0
           linePlayers += 1
           self.isFulGoal = true if linePlayers== self.goalkeeperlimit
         end

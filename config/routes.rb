@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "events#index"
+  root "hello#index"
 
 
   devise_for :users
