@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resource :inboxes, :controller => 'inboxes', :only => [:show,:create]
+  resource :inbox, :controller => 'hooks/inbox', :only => [:show,:create]
+  resource :inbox, :controller => 'inbox', :only => [:show,:create]
   root "events#index"
 
 

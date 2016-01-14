@@ -74,7 +74,7 @@ class EventsController < ApplicationController
       @event.users << current_user
       @event.setFul
       redirect_to :back, :notice => "Cadastrado :) sim #{@event.isFul}, #{@event.isFulGoal}"
-    
+
     end
 
 
@@ -95,7 +95,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :hour, :userlimit, :user, :goalkeeperlimit)
+      params.require(:event).permit(:name, :date, :hour, :userlimit, :user, :goalkeeperlimit, :cost)
     end
 
 
