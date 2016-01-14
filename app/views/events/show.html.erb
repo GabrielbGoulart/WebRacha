@@ -24,8 +24,13 @@
 
   <%@event.users.each do |d|%>
     <%=@users.find(d.id).name%>
-  <%end%>
+<%end%>
 
+<p>
+  <strong>Cost:</strong>
+    <%valor = @event.cost/@event.userlimit %>
+    <%= valor.round(2) %>
+</p>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111004958) do
+ActiveRecord::Schema.define(version: 20160112211359) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160111004958) do
     t.integer  "goalkeeperlimit"
     t.boolean  "isFulGoal",       default: false
     t.boolean  "isFul",           default: false
+    t.float    "cost"
   end
 
   add_index "events", ["owner"], name: "index_events_on_owner"
