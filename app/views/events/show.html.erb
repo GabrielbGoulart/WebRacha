@@ -1,25 +1,6 @@
 
-<<<<<<< HEAD
-<p>
-  <strong>User:</strong>
-  <%= @event.owner %>
-</p>
-
-<%=@event.userlimit%>
-
-  <%@event.users.each do |d|%>
-    <%=@users.find(d.id).name%>
-<%end%>
-
-<p>
-  <strong>Cost:</strong>
-    <%valor = @event.cost / @event.userlimit %>
-    <%= valor.round(2) %>
-</p>
-=======
 <hr>
 <p id="notice"><%= notice %></p>
->>>>>>> install_template
 
 
 <table class="table">

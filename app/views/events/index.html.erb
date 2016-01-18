@@ -8,7 +8,7 @@
                  </div>
              </div>
          </div>
-         
+
          <div class="row">
           <% @events.each do |event|%>
           <% i=0%>
@@ -22,7 +22,6 @@
                          <h3 class="media-heading"><%=link_to("#{event.name.capitalize}",event)%></h3>
                          <p>Data: <%=event.date.to_formatted_s(:short) %>
                             às <%=event.hour.to_formatted_s(:time)%>
-                            <%=link_to 'Cadastrar',"/subscribe/#{event.id}", method: :put %>
                          </p>
                      </div>
                  </div>
@@ -36,5 +35,5 @@
          <%end%>
      </div>
  </section>
-
+<%= link_to "Novo evento", new_event_path, class: "btn btn-primary" %>
  <hr>

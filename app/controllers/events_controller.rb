@@ -1,11 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
-  before_action :authenticate_user!
-  before_action :check_owner, only:[:edit, :destroy]
-=======
+
   before_action :authenticate_user!, only: [:subscribe, :create, :edit, :destroy, :new]
->>>>>>> install_template
 
   # GET /events
   # GET /events.json
