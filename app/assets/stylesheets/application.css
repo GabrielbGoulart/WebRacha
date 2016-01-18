@@ -13,9 +13,8 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD
 
-
-.container{
-  padding-top: 60px;
-
-}
+ *= require bootstrap_and_overrides
+=======
+>>>>>>> install_template

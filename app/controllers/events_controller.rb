@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:subscribe, :create, :edit, :destroy, :new]
+<<<<<<< HEAD
+  before_action :authenticate_user!
   before_action :check_owner, only:[:edit, :destroy]
+=======
+  before_action :authenticate_user!, only: [:subscribe, :create, :edit, :destroy, :new]
+>>>>>>> install_template
 
   # GET /events
   # GET /events.json
@@ -15,6 +19,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @users = User.all
+    @current_user = current_user
   end
 
   # GET /events/new
@@ -31,7 +36,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.owner = current_user.id
-
+  @event.users << current_user
 
     respond_to do |format|
       if @event.save
@@ -73,21 +78,19 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
       @event.users << current_user
       @event.setFul
-      redirect_to :back, :notice => "Cadastrado :) sim #{@event.isFul}, #{@event.isFulGoal}"
+      redirect_to :back, :notice => "Cadastrado :)"
 
     end
+    def unsubscribe
 
+      @event = Event.find(params[:id])
+      @event.users.delete(current_user)
+      @event.setFul
+      redirect_to :back, :notice => "descadastrado :)"
+    end
 
   private
 
-    def check_owner
-      if current_user.id == @event.owner
-      else
-          redirect_to root_path
-
-        end
-
-    end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

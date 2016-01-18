@@ -1,0 +1,30 @@
+
+<section id="title" class="emerald">
+       <div class="container">
+           <div class="row">
+               <div class="col-sm-6">
+                 <h1>
+                     <!-- true -->
+                   <%= @event.name.capitalize %>
+                   </h1>
+                   <p>Dia: <%=@event.date.to_formatted_s(:short) %>
+                      às <%=@event.hour.to_formatted_s(:time)%></p>
+                   <p> Organizador: <%=@users.find(@event.owner).name %></p>
+                   <p>Valor total:R$<%= @event.cost %> </p>
+                   <% if user_signed_in? %>
+                      <% if @current_user.position == "Goleiro" %>
+                          <% if @event.isFulGoal %>
+                            <p>
+                              não há vagas
+                            </p>
+                            <% else %>
+                            <p> <%= @event.goalkeeperlimit - @event.numberOfUsers("Goleiro") %>  </p>
+                          <% end %>
+                        <% else %>
+
+                      <% end %>
+                   <% end %>
+               </div>
+           </div>
+       </div>
+   </section>
