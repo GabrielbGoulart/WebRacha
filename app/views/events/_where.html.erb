@@ -18,7 +18,7 @@
                               não há vagas
                             </p>
                             <% else %>
-                            <p> <%= @event.goalkeeperlimit - @event.users.where(position =="Goleiro").count %>  </p>
+                            <p> <%= @event.goalkeeperlimit - @event.numberOfUsers("Goleiro") %>  </p>
                           <% end %>
                         <% else %>
 
