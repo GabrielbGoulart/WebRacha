@@ -1,20 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Hour:</strong>
-  <%= @event.hour %>
-</p>
-
+<<<<<<< HEAD
 <p>
   <strong>User:</strong>
   <%= @event.owner %>
@@ -31,7 +16,27 @@
     <%valor = @event.cost / @event.userlimit %>
     <%= valor.round(2) %>
 </p>
+=======
+<hr>
+<p id="notice"><%= notice %></p>
+>>>>>>> install_template
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<table class="table">
+  <caption><strong>Escalação dos confirmados </strong></caption>
+   <thead>
+      <tr>
+        <th>Posição</th>
+        <th>Nome</th>
+       </tr>
+     </thead>
+     <%@event.users.each do |p|%>
+    <tbody>
+      <tr>
+       <th scope="row"><%=@users.find(p.id).position%></th>
+        <td><%=@users.find(p.id).name%></td>
+       </tr>
+      </tbody>
+      <% end %>
+</table>
+<%= render 'events/buttons' %>

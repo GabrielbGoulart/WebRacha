@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
   root "events#index"
+=======
+  root "hello#index"
+>>>>>>> install_template
 
   resource :inboxes, :controller => 'inboxes', :only => [:show,:create]
   resource :inbox, :controller => 'hooks/inbox', :only => [:show,:create]
   resource :inbox, :controller => 'inbox', :only => [:show,:create]
 
 
+<<<<<<< HEAD
 
   devise_scope :user do
     put 'sign_in' => 'devise/sessions#new'
@@ -14,6 +19,10 @@ Rails.application.routes.draw do
   devise_for :users
 
 put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
+=======
+  devise_for :users
+  put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
+>>>>>>> install_template
   resources :events
 
   # The priority is based upon order of creation: first created -> highest priority.
