@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
   root "hello#index"
+
   resource :inboxes, :controller => 'inboxes', :only => [:show,:create]
   resource :inbox, :controller => 'hooks/inbox', :only => [:show,:create]
   resource :inbox, :controller => 'inbox', :only => [:show,:create]
 
 
   devise_for :users
-
-  devise_scope :user do
-    get 'sign_in' => 'devise/sessions#new'
-  end
-
-put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
+  put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
   resources :events
 
   # The priority is based upon order of creation: first created -> highest priority.

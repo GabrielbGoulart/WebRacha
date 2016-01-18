@@ -7,15 +7,26 @@ class Event < ActiveRecord::Base
 
   def setFul
       users = User.all
+      goalKeepers =0
+      linePlayers= 0
     self.users.each do |p|
         if users.find(p.id).position == "Goleiro"
-          goalKeepers =0
           goalKeepers += 1
-          self.isFul = true if goalKeepers == self.userlimit
+          self.isFulGoal = true if goalKeepers== self.goalkeeperlimit
         else
-          linePlayers= 0
           linePlayers += 1
-          self.isFulGoal = true if linePlayers== self.goalkeeperlimit
+          if linePlayers == self.userlimit
+          self.isFul = true
+        end
+        end
+      end
+  end
+
+  def numberOfUsers(position)
+      self.users.each do |p|
+        if position == "Goleiro"
+
+        else
         end
       end
   end
