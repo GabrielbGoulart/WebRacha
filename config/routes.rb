@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
 
+  put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
+  put 'events/:evid/unsubscribe/:id' => 'events#unsubscribe', as: "unsubscribe_event"
   resources :events
 
   # The priority is based upon order of creation: first created -> highest priority.

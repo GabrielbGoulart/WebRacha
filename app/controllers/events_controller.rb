@@ -78,9 +78,8 @@ class EventsController < ApplicationController
 
     end
     def unsubscribe
-
-      @event = Event.find(params[:id])
-      @event.users.delete(current_user)
+      @event = Event.find(params[:evid])
+      @event.users.delete(params[:id])
       @event.setFul
       redirect_to :back, :notice => "descadastrado :)"
     end

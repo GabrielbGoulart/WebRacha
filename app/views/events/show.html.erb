@@ -16,6 +16,11 @@
       <tr>
        <th scope="row"><%=@users.find(p.id).position%></th>
         <td><%=@users.find(p.id).name%></td>
+        <% if user_signed_in? and current_user.id== @event.owner%>
+        <td> <%= link_to "/unsubscribe/#{p.id}", method: :put do %>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <% end %>
+        <% end %></td>
        </tr>
       </tbody>
       <% end %>
