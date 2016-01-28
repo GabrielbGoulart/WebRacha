@@ -2,10 +2,16 @@
 
   <% if @current_user.id == @event.owner%>
 
-    <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %>
-  <% elsif @event.already_subscribed(@current_user) %>
-      <%= link_to "desinscrever", root_path , "btn btn-dange"%>
+    <%= link_to 'Editar Evento', edit_event_path(@event), class: "btn btn-warning" , style: "width: 100%;" %>
+
+    <% else %>
+      <% if @event.already_subscribed(@current_user) %>
+          <%= link_to "desinscrever", "/events/#{@event.id}/unsubscribe/#{current_user.id}" ,method: :put, class:"btn btn-danger", style: "width: 100%;" %>
+          <% else %>
+            <%=link_to 'Se inscrever',"/subscribe/#{@event.id}", method: :put, class: "btn btn-success", style: "width: 100%;"  %>
+      <% end %>
   <% end %>
-<% else %>
-<td><%=link_to 'Se inscrever',"/subscribe/#{@event.id}", method: :put, class: "btn btn-success" %>
-<% end %>
+
+    <% else %>
+      <%= link_to "Logar para se inscrever!", new_user_session_path, class: "btn btn-primary", style: "width: 100%;" %>
+    <% end %>

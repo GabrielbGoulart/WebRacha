@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WebRacha</title>
+  <title>Web Racha</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,11 +12,9 @@
              <div class="navbar-header">
                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                      <span class="sr-only">Toggle navigation</span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
+
                  </button>
-                 <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                 <a class="navbar-brand" href="/"><img src="images/logo.png" alt="logo"></a>
              </div>
              <div class="collapse navbar-collapse">
                  <ul class="nav navbar-nav navbar-right">
@@ -24,21 +22,14 @@
                        <li><%= link_to "Home", root_path %></li>
                      <li><%= link_to "Ver Rachas", events_path %></li>
                      <li>
-                     <%= link_to 'log out', destroy_user_session_path , :method => :delete if user_signed_in? %>
+                       <% if user_signed_in? %>
+                         <%= link_to 'log out', destroy_user_session_path , :method => :delete  %>
+                       <% else %>
+                       <%= link_to "Entrar", new_user_session_path %>
+                       <% end %>
+                   </li>
 
-                     <li class="dropdown">
-                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                         <ul class="dropdown-menu">
-                             <li><%= link_to "sair", destroy_user_session_path, :method => :destroy %></li>
-                             <li><a href="blog-item.html">Blog Single</a></li>
-                             <li><a href="pricing.html">Pricing</a></li>
-                             <li><a href="404.html">404</a></li>
-                             <li><a href="registration.html">Registration</a></li>
-                             <li class="divider"></li>
-                             <li><a href="privacy.html">Privacy Policy</a></li>
-                             <li><a href="terms.html">Terms of Use</a></li>
-                         </ul>
-                     </li>
+
                  </ul>
              </div>
          </div>
@@ -48,8 +39,6 @@
        <%= render 'events/where' %>
      <% end %>
 
-
-
     <%= yield %>
 
   <!--/#bottom-->
@@ -58,17 +47,8 @@
       <div class="container">
           <div class="row">
               <div class="col-sm-6">
-                  &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-              </div>
-              <div class="col-sm-6">
-                  <ul class="pull-right">
-                      <li><a href="#">Home</a></li>
-                      <li><a href="#">About Us</a></li>
-                      <li><a href="#">Faq</a></li>
-                      <li><a href="#">Contact Us</a></li>
-                      <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
-                  </ul>
-              </div>
+                  &copy; 2016 <a>Negada Produções</a>. All Rights Reserved.
+                </div>
           </div>
       </div>
   </footer><!--/#footer-->
