@@ -2,6 +2,7 @@
      <div class="container">
          <div class="row">
              <div class="col-md-12">
+               <p id="notice"><%= notice %></p>
                  <div class="center gap">
                      <h2>What we do</h2>
                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
@@ -18,8 +19,15 @@
                          <span class="glyphicon glyphicon-ok icon-md"></span>
                    </div>
                      <div class="media-body">
+                         <!-- true -->
+                         <h3 class="media-heading"><%=link_to("#{event.name.capitalize}",event)%>
+                           <% if event.owner == current_user %>
+                            <%= link_to event, method: :delete do %>
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <% end %>
 
-                         <h3 class="media-heading"><%=link_to("#{event.name.capitalize}",event)%></h3>
+                            <% end %>
+                         </h3>
                          <p>Data: <%=event.date.to_formatted_s(:short) %>
                             às <%=event.hour.to_formatted_s(:time)%>
                          </p>
@@ -35,5 +43,7 @@
          <%end%>
      </div>
  </section>
+ <% if user_signed_in?%>
 <%= link_to "Novo evento", new_event_path, class: "btn btn-primary" %>
+<%end %>
  <hr>

@@ -2,7 +2,6 @@
 <hr>
 <p id="notice"><%= notice %></p>
 
-
 <table class="table">
   <caption><strong>Escalação dos confirmados </strong></caption>
    <thead>
@@ -17,7 +16,7 @@
        <th scope="row"><%=@users.find(p.id).position%></th>
         <td><%=@users.find(p.id).name%></td>
         <% if user_signed_in? and current_user.id== @event.owner%>
-        <td> <%= link_to "/unsubscribe/#{p.id}", method: :put do %>
+        <td> <%= link_to "#{@event.id}/unsubscribe/#{p.id}", method: :put do %>
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       <% end %>
         <% end %></td>
