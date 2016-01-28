@@ -7,21 +7,30 @@
    <thead>
       <tr>
         <th>Posição</th>
-        <th>Nome</th>
+        <th>Nome Da Galera</th>
+
+        <% if user_signed_in? and current_user.id== @event.owner %>
+          <th> Apagar esse Bicho? </th>
+        <% end %>
        </tr>
      </thead>
      <%@event.users.each do |p|%>
-    <tbody>
-      <tr>
-       <th scope="row"><%=@users.find(p.id).position%></th>
-        <td><%=@users.find(p.id).name%></td>
-        <% if user_signed_in? and current_user.id== @event.owner%>
-        <td> <%= link_to "#{@event.id}/unsubscribe/#{p.id}", method: :put do %>
-      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      <% end %>
+      <tbody>
+        <tr>
+         <th scope="row"><%=@users.find(p.id).position%></th>
+          <td><%=@users.find(p.id).name%></td>
+            <% if user_signed_in? and current_user.id== @event.owner%>
+          <td> <%= link_to "#{@event.id}/unsubscribe/#{p.id}",  title: 'Clique para apagar', 'data-toggle' => 'tooltip', 'data-placement' => 'right', method: :put do %>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              <% end %>
         <% end %></td>
        </tr>
       </tbody>
       <% end %>
 </table>
-<%= render 'events/buttons' %>
+
+<div class="row">
+  <div class="col-md-3 col-md-offset-4  ">
+    <%= render 'events/buttons' %>
+  </div>
+</div>

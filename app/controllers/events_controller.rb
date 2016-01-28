@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.owner = current_user.id
-  @event.users << current_user
+
 
     respond_to do |format|
       if @event.save
