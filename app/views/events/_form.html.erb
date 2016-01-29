@@ -15,7 +15,7 @@
 
       <ul>
       <% @event.errors.full_messages.each do |message| %>
-        <li>  
+        <li>
           <div class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
@@ -52,7 +52,10 @@
     <%= f.label :Preço %><br>
     <%= f.number_field :cost %>
   </div>
-
+  <div class="field">
+    <%= f.label :adress %><br>
+    <%= f.text_field :adress %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
