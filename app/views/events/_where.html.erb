@@ -3,11 +3,9 @@
        <div class="container">
            <div class="row">
                <div class="col-sm-6">
-                 <p>
-                   <%= @event.adress %>
+                 <h1>
+                   <%= @event.name %></h1>
                  </p>
-                   <p>Dia: <%=@event.date.to_formatted_s(:short) %>
-                      às <%=@event.hour.to_formatted_s(:time)%></p>
                    <p> Organizador: <%=@users.find(@event.owner).name %></p>
                    <p>Valor total:R$<%= @event.cost %> </p>
                    <% if user_signed_in? %>
@@ -31,7 +29,14 @@
                    <% end %>
                </div>
                <div class="col-sm-6 ">
-                 <h1>  </h1>
+                 <br><br>
+                 <br>
+                 
+                  <p>
+                    <%= @event.adress %>
+                    <p>Dia: <%=@event.date.to_formatted_s(:short) %>
+                       às <%=@event.hour.to_formatted_s(:time)%></p>
+                  </p>
 
                </div>
            </div>
