@@ -1,12 +1,10 @@
 <script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script>
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->-
-<hr>
+
 
 <table class="table">
-  <div style='width: 800px; align:center;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
-  </div>
+
   <caption><strong>Escalação dos confirmados </strong></caption>
    <thead>
       <tr>
@@ -20,7 +18,7 @@
          <th scope="row"><%=@users.find(p.id).position%></th>
           <td><%=@users.find(p.id).name%></td>
             <% if user_signed_in? and current_user.id== @event.owner and p.id != @event.owner%>
-          <td> <%= link_to "#{@event.id}/unsubscribe/#{p.id}",  title: 'Clique para apagar', 'data-toggle' => 'tooltip', 'data-placement' => 'right', method: :put do %>
+          <td> <%= link_to "#{@event.id}/unsubscribe/#{p.id}",  title: 'Clique para apagar', 'data-toggle' => 'tooltip', 'data-placement' => 'right', method: :put, data: { confirm: 'Tem certeza que quer excluir o coleguinha?' } do %>
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               <% end %>
         <% end %></td>
@@ -28,12 +26,28 @@
       </tbody>
       <% end %>
 </table>
-<%# image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}" %>
 <div class="row">
   <div class="col-md-3 col-md-offset-4  ">
     <%= render 'events/buttons' %>
   </div>
 </div>
+<div class="container">
+    <div class="row">
+      <div class="well well-lg">
+        <div class="class-md-3 col-sd-3">
+          <h1 >
+            Endereço:
+          </h1>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class = "class-md-3 col-sd-3">
+      <div id="map" style='width: 100%; height: 400px;'></div>
+    </div>
+  </div>
+</div>
+<hr>
 <script type="text/javascript">
 
 handler = Gmaps.build('Google');

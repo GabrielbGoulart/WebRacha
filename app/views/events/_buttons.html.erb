@@ -6,7 +6,7 @@
 
     <% else %>
       <% if @event.already_subscribed(@current_user) %>
-          <%= link_to "desinscrever", "/events/#{@event.id}/unsubscribe/#{current_user.id}" ,method: :put, class:"btn btn-danger", style: "width: 100%;" %>
+          <%= link_to "desinscrever", "/events/#{@event.id}/unsubscribe/#{current_user.id}" ,method: :put, class:"btn btn-danger", style: "width: 100%;"  %>
           <% else %>
             <%=link_to 'Se inscrever',"/subscribe/#{@event.id}", method: :put, class: "btn btn-success", style: "width: 100%;"  %>
       <% end %>

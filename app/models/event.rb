@@ -3,6 +3,15 @@ class Event < ActiveRecord::Base
 
   geocoded_by :adress
   after_validation :geocode
+  validates :name, presence: true, uniqueness: true, length: {maximum: 30}
+  validates :adress, presence: true
+  validates_presence_of :date, :hour, :goalkeeperlimit, :userlimit
+  validates :goalkeeperlimit, numericality: { max_than_or_equal_to:6 ,  only_integer: true }
+    validates :userlimit, numericality: { max_than_or_equal_to:6 ,  only_integer: true }
+
+
+
+
 
   def already_subscribed(user)
     self.users.include?(user)

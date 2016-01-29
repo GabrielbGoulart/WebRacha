@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 
 gem "letter_opener", :group => :development

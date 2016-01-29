@@ -2,7 +2,7 @@
      <div class="container">
          <div class="row">
              <div class="col-md-12">
-               <p id="notice"><%= notice %></p>
+            
                  <div class="center gap">
                      <h2>Rachinhas </h2>
                      <p>Escolha o seu e seja feliz batendo aquele rachinha</p>
@@ -36,6 +36,7 @@
              </div><!--/.col-md-4-->
              <% i+=1%>
                <% if i==3%>
+               <br><br><br>
                 </div><!--/.row-->
                  <div class="gap"></div>
                <%i=0%>
@@ -43,7 +44,14 @@
          <%end%>
      </div>
  </section>
- <% if user_signed_in?%>
-<%= link_to "Novo evento", new_event_path, class: "btn btn-primary" %>
-<%end %>
- <hr>
+ <div class="col-md-3 col-md-offset-1 ">
+   <% if user_signed_in?%>
+   <%= link_to "Novo evento", new_event_path, class: "btn btn-primary" %>
+   <%end %>
+ </div>
+ <div class="row">
+   <div class="col-md-3 col-md-offset-1  ">
+     <%= paginate @events,  :theme => 'twitter-bootstrap-3' %>
+   </div>
+</div>
+<hr>
