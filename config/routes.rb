@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resource :inbox, :controller => 'hooks/inbox', :only => [:show,:create]
   resource :inbox, :controller => 'inbox', :only => [:show,:create]
 
-
   devise_for :users
 
   put 'subscribe/:id' => 'events#subscribe', as: "subscribe_event"
